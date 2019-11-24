@@ -21,6 +21,7 @@ public class BookingsService {
         try {
             this.bookingsDAO.load();
         } catch (EmptyFileException ignored) {
+
         }
     }
 
