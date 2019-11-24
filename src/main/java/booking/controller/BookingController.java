@@ -15,7 +15,6 @@ public class BookingController {
     private BookingsService bookingsService;
     private Logger logger;
 
-
     public BookingController(Console console, BookingsService bookingsService, Logger logger) {
         this.console = console;
         this.bookingsService = bookingsService;
@@ -99,5 +98,6 @@ public class BookingController {
         bookingsService.getUserBookings()
                 .stream()
                 .forEach(console::printLn);
+
     }
 }

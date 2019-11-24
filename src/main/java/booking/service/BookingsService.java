@@ -31,6 +31,7 @@ public class BookingsService {
             return true;
         }catch (FlightNotFound e){
             return false;
+
         }
     }
 

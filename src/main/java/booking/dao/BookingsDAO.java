@@ -63,8 +63,8 @@ public class BookingsDAO implements DAO<Booking>{
             throw new EmptyFileException();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Something went wrong while loading from Bookings file");
-
         }
+
     }
 
 }
