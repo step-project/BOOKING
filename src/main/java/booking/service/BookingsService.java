@@ -61,7 +61,6 @@ public class BookingsService {
         if (list.size() == 0) return 1;
         int last_id = list.get(list.size() - 1).getId();
         return last_id + 1;
-
     }
 
     public List<String> getUserBookings() {
@@ -70,6 +69,19 @@ public class BookingsService {
                 .filter(b -> (user.equals(b.getUser())))
                 .map(Booking:: toString)
                 .collect(Collectors.toList());
+    }
+
+
+    public String getUserBooking(int id){
+        User user = commonService.getCurrentUser();
+        Booking booking = bookingsDAO.get(id);
+        if(booking == null){
+            throw new BookingNotFound();
+        }
+        if(booking.getUser().equals(user)){
+            return booking.toString();
+        }
+        throw new BookingNotFound();
     }
 
 

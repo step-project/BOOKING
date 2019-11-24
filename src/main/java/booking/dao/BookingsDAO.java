@@ -50,7 +50,7 @@ public class BookingsDAO implements DAO<Booking>{
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(bookings);
         } catch (IOException e) {
-            System.out.println("Something went wrong  during creation of Bookings file");
+            System.out.println("Something went wrong during creation of Bookings file");
         }
     }
 

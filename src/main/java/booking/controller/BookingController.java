@@ -1,24 +1,28 @@
 package booking.controller;
 
-import booking.service.BookingsService;
 import booking.Console;
+import booking.entity.User;
 import booking.exceptions.BookingNotFound;
 import booking.exceptions.FlightNotFound;
+import booking.service.BookingsService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class BookingController {
     private Console console;
     private BookingsService bookingsService;
+    private Logger logger;
 
-    public BookingController(Console console, BookingsService bookingsService) {
+    public BookingController(Console console, BookingsService bookingsService, Logger logger) {
         this.console = console;
         this.bookingsService = bookingsService;
+        this.logger = logger;
     }
 
     public void add() {
-        console.printLn("===============   MAKE A BOOKING   ===============");
+        console.printLn("===============  MAKE A BOOKING  ===============");
         console.printLn("Enter flight id : ");
         String flight_id_str;
         int flight_id;
@@ -39,7 +43,14 @@ public class BookingController {
 
 
         console.printLn("Number of tickets you want to book : ");
-        int numberOfTickets = Integer.parseInt(console.readNotEmpty());
+        int numberOfTickets = 0;
+        while (numberOfTickets <= 0){
+            numberOfTickets = Integer.parseInt(console.readNotEmpty());
+            if(numberOfTickets <= 0){
+                console.printLn("Please, enter a positive number");
+            }
+        }
+
         if(!bookingsService.isThereEnoughSeat(flight_id, numberOfTickets)){
             console.printLn(String.format("There is not enough seat for %d passengers.", numberOfTickets));
             return;
@@ -58,6 +69,9 @@ public class BookingController {
             console.printLn("Flight Not Found.");
         }
 
+        logger.info("   Made a booking -->");
+        List<String> bookings = bookingsService.getUserBookings();
+        logger.info("       " + bookings.get(bookings.size() - 1));
         console.printLn("Thank you. Booking was successful.");
     }
 
@@ -66,12 +80,14 @@ public class BookingController {
         console.printLn("Please enter Booking id : ");
         int id = Integer.parseInt(console.readNotEmpty());
         try {
+            String booking = bookingsService.getUserBooking(id);
             bookingsService.cancelBooking(id);
             console.printLn("Booking is cancelled");
+            logger.info("   Cancelled a booking");
+            logger.info("       " + booking);
         } catch (BookingNotFound e){
             console.printLn("Booking not found.");
         }
-
     }
 
     public void show() {
