@@ -11,7 +11,7 @@ import booking.dao.AuthenticationDAO;
 import booking.io.Command;
 import booking.io.Parser;
 import booking.io.menus.AuthenticationMenu;
-import booking.service.*;
+import booking.service.BookingsService;
 
 import java.io.IOException;
 import java.util.Formatter;
