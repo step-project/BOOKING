@@ -3,44 +3,45 @@ package booking.entity;
 import java.io.Serializable;
 
 public class City implements Serializable {
-  private final int id;
-  private final String name;
+    private final int id;
+    private final String name;
 
-  public City(int id, String name) {
-    this.id = id;
-    this.name = name;
-  }
-  public int getId() {
-    return id;
-  }
+    public City(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public int getId() {
+        return id;
+    }
 
-  @Override
-  public String toString() {
-    return "City{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            '}';
-  }
+    public String getName() {
+        return name;
+    }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof City)) return false;
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
-    City city = (City) o;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City)) return false;
 
-    if (id != city.id) return false;
-    return name != null ? name.equals(city.name) : city.name == null;
-  }
+        City city = (City) o;
 
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    return result;
-  }
+        if (id != city.id) return false;
+        return name != null ? name.equals(city.name) : city.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
 }

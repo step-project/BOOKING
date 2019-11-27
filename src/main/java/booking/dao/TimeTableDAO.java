@@ -7,7 +7,7 @@ import booking.exceptions.FlightNotFoundException;
 import java.io.*;
 import java.util.*;
 
-public class TimeTableDAO implements DAO<Flight>{
+public class TimeTableDAO implements DAO<Flight> {
 
     private Map<Integer, Flight> timeTable = new TreeMap<>();
     private File timeTableFile = new File("src\\main\\java\\booking\\data\\timetable.txt");
@@ -15,7 +15,7 @@ public class TimeTableDAO implements DAO<Flight>{
 
     @Override
     public Flight get(int id) {
-        if(!timeTable.containsKey(id)){
+        if (!timeTable.containsKey(id)) {
             throw new FlightNotFoundException("Flight not found.");
         }
         return timeTable.get(id);

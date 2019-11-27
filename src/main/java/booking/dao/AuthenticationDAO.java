@@ -10,14 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AuthenticationDAO implements DAO<User>{
+public class AuthenticationDAO implements DAO<User> {
     private Map<Integer, User> users = new HashMap<>();
     private File usersFile = new File("src\\main\\java\\booking\\data\\users.txt");
 
     @Override
     public User get(int id) {
         User user = users.get(id);
-        if(user == null){
+        if (user == null) {
             throw new AuthenticationFailException();
         }
         return user;

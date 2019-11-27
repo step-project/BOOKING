@@ -12,10 +12,9 @@ public class MainService {
     }
 
     public void switchMenu() {
-        if(this.menu instanceof UserMenu){
+        if (this.menu instanceof UserMenu) {
             this.menu = new AuthenticationMenu();
-        }
-        else {
+        } else {
             this.menu = new UserMenu();
         }
     }

@@ -25,17 +25,17 @@ public class BookingsService {
         }
     }
 
-    public Boolean isFlightExist(int flight_id){
-        try{
+    public Boolean isFlightExist(int flight_id) {
+        try {
             commonService.getFlight(flight_id);
             return true;
-        }catch (FlightNotFoundException e){
+        } catch (FlightNotFoundException e) {
             return false;
 
         }
     }
 
-    public Boolean isThereEnoughSeat(int flight_id, int n){
+    public Boolean isThereEnoughSeat(int flight_id, int n) {
         return n <= commonService.getFlight(flight_id).getRemainingSeats();
     }
 
@@ -49,7 +49,7 @@ public class BookingsService {
 
     public void cancelBooking(int id) {
         Booking booking = bookingsDAO.get(id);
-        if(!booking.getUser().equals(commonService.getCurrentUser())){
+        if (!booking.getUser().equals(commonService.getCurrentUser())) {
             throw new BookingNotFoundException();
         }
         Flight flight = booking.getFlight();
@@ -69,18 +69,18 @@ public class BookingsService {
         User user = commonService.getCurrentUser();
         return bookingsDAO.getAll().stream()
                 .filter(b -> (user.equals(b.getUser())))
-                .map(Booking:: toString)
+                .map(Booking::toString)
                 .collect(Collectors.toList());
     }
 
 
-    public String getUserBooking(int id){
+    public String getUserBooking(int id) {
         User user = commonService.getCurrentUser();
         Booking booking = bookingsDAO.get(id);
-        if(booking == null){
+        if (booking == null) {
             throw new BookingNotFoundException();
         }
-        if(booking.getUser().equals(user)){
+        if (booking.getUser().equals(user)) {
             return booking.toString();
         }
         throw new BookingNotFoundException();

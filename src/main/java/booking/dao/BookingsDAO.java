@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BookingsDAO implements DAO<Booking>{
+public class BookingsDAO implements DAO<Booking> {
     private Map<Integer, Booking> bookings;
     private File bookingsFile = new File("src\\main\\java\\booking\\data\\bookings.txt");
 
@@ -21,7 +21,7 @@ public class BookingsDAO implements DAO<Booking>{
 
     @Override
     public Booking get(int id) {
-        if(!bookings.containsKey(id)){
+        if (!bookings.containsKey(id)) {
             throw new BookingNotFoundException("Booking not found.");
         }
         return bookings.get(id);

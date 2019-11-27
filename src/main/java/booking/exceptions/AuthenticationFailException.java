@@ -1,6 +1,6 @@
 package booking.exceptions;
 
-public class AuthenticationFailException extends RuntimeException{
+public class AuthenticationFailException extends RuntimeException {
     public AuthenticationFailException() {
         super();
     }

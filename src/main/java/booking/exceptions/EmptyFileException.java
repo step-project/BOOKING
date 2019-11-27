@@ -1,6 +1,6 @@
 package booking.exceptions;
 
-public class EmptyFileException extends RuntimeException{
+public class EmptyFileException extends RuntimeException {
     public EmptyFileException() {
     }
 

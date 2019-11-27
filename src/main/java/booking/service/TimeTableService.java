@@ -26,13 +26,13 @@ public class TimeTableService {
         }
     }
 
-    public List<String> searchFlights(LocalDate date, String src, String dst){
+    public List<String> searchFlights(LocalDate date, String src, String dst) {
         return timeTableDAO.getAll().stream()
                 .filter(new Predicate<Flight>() {
                     @Override
                     public boolean test(Flight flight) {
                         return ((dst.equals("")) || flight.getDst().getName().toLowerCase().equals(dst)) &&
-                                ((src.equals(""))|| flight.getSrc().getName().toLowerCase().equals(src)) &&
+                                ((src.equals("")) || flight.getSrc().getName().toLowerCase().equals(src)) &&
                                 flight.getTime().toLocalDate().equals(date);
                     }
                 })
@@ -40,7 +40,7 @@ public class TimeTableService {
                 .collect(Collectors.toList());
     }
 
-    public List<String> getAllFlights(){
+    public List<String> getAllFlights() {
         return timeTableDAO.getAll().stream()
                 .map(Flight::toString)
                 .collect(Collectors.toList());
@@ -63,11 +63,11 @@ public class TimeTableService {
         LocalDateTime initial = LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0, 0);
         int next_id = 1;
         for (int i = 1; i <= 70; i++) {
-            int random = (int)(Math.random() * 4);
+            int random = (int) (Math.random() * 4);
             //Collections.shuffle(cities);
             for (int k = 1; k <= random; k++) {
-                int a = (int)(Math.random() * (cities.size() - 1));
-                int b = (int)(Math.random() * (cities.size() - 1));
+                int a = (int) (Math.random() * (cities.size() - 1));
+                int b = (int) (Math.random() * (cities.size() - 1));
                 if (a == b) a++;
                 timeTableDAO.put(new Flight(next_id, cities.get(a % cities.size()), cities.get(b % cities.size()), (int) (Math.random() * 100), initial.plusHours(i)));
                 next_id++;

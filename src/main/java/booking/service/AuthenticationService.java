@@ -39,11 +39,11 @@ public class AuthenticationService {
         return !userNameExists;
     }
 
-     User getCurrentUser() {
+    User getCurrentUser() {
         return currentUser;
     }
 
-    public String getCurrentUserName(){
+    public String getCurrentUserName() {
         return currentUser.getUsername();
     }
 
@@ -63,12 +63,12 @@ public class AuthenticationService {
         }
     }
 
-    public void EndSession(){
+    public void EndSession() {
         currentUser = null;
         commonService.switchMenu();
     }
 
-    public boolean isSessionStarted(){
+    public boolean isSessionStarted() {
         return currentUser != null;
     }
 

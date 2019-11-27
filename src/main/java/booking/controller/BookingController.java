@@ -25,32 +25,30 @@ public class BookingController {
         console.printLn("Enter flight id : ");
         String flight_id_str;
         int flight_id;
-        while (true){
-            try{
+        while (true) {
+            try {
                 flight_id_str = console.readNotEmpty();
                 flight_id = Integer.parseInt(flight_id_str);
                 break;
-            } catch (FlightNotFoundException e){
+            } catch (FlightNotFoundException e) {
                 console.printLn("Flight not found.");
                 return;
-            }
-            catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 console.printLn("Please, enter an integer.");
             }
         }
 
 
-
         console.printLn("Number of tickets you want to book : ");
         int numberOfTickets = 0;
-        while (numberOfTickets <= 0){
+        while (numberOfTickets <= 0) {
             numberOfTickets = Integer.parseInt(console.readNotEmpty());
-            if(numberOfTickets <= 0){
+            if (numberOfTickets <= 0) {
                 console.printLn("Please, enter a positive number");
             }
         }
 
-        if(!bookingsService.isThereEnoughSeat(flight_id, numberOfTickets)){
+        if (!bookingsService.isThereEnoughSeat(flight_id, numberOfTickets)) {
             console.printLn(String.format("There is not enough seat for %d passengers.", numberOfTickets));
             return;
         }
@@ -62,9 +60,9 @@ public class BookingController {
             passengers.add(name);
         }
 
-        try{
+        try {
             bookingsService.addBooking(flight_id, passengers);
-        }catch (FlightNotFoundException e){
+        } catch (FlightNotFoundException e) {
             console.printLn("Flight Not Found.");
         }
 
@@ -84,14 +82,14 @@ public class BookingController {
             console.printLn("Booking is cancelled");
             logger.info("   Cancelled a booking");
             logger.info("       " + booking);
-        } catch (BookingNotFoundException e){
+        } catch (BookingNotFoundException e) {
             console.printLn("Booking not found.");
         }
     }
 
     public void show() {
         console.printLn("===============  SHOW MY BOOKINGS  ===============");
-        if(bookingsService.getUserBookings().size()==0){
+        if (bookingsService.getUserBookings().size() == 0) {
             console.printLn("You have not made any bookings yet.");
         }
         bookingsService.getUserBookings()

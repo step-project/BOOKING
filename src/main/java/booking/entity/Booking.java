@@ -73,7 +73,7 @@ public class Booking implements Serializable {
         return id +
                 ". Flight : from " + flight.getSrc().getName() + " to " + flight.getDst().getName() +
                 " -- Date/Time : " + flight.getTime() +
-                " -- Passengers (" + passengers.size() +  ") : " + passengers
+                " -- Passengers (" + passengers.size() + ") : " + passengers
                 ;
     }
 }

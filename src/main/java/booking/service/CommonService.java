@@ -6,7 +6,7 @@ import booking.entity.User;
 
 import java.util.List;
 
-public class CommonService{
+public class CommonService {
     private CitiesService citiesService;
     private BookingsService bookingsService;
     private TimeTableService timeTableService;
@@ -38,26 +38,27 @@ public class CommonService{
     }
 
 
-     List<City> getAllCities() {
+    List<City> getAllCities() {
         return citiesService.getAll();
     }
-     void addBooking(int flight_id, List<String> passengers) {
+
+    void addBooking(int flight_id, List<String> passengers) {
         bookingsService.addBooking(flight_id, passengers);
     }
 
-     void cancelBooking(User user, int id) {
+    void cancelBooking(User user, int id) {
         bookingsService.cancelBooking(id);
     }
 
-     List<String> getUserBookings(User user) {
+    List<String> getUserBookings(User user) {
         return bookingsService.getUserBookings();
     }
 
-     Flight getFlight(int id) {
+    Flight getFlight(int id) {
         return timeTableService.getFlight(id);
     }
 
-     void updateSeatsBy(int id, int n) {
+    void updateSeatsBy(int id, int n) {
         timeTableService.updateSeatsBy(id, n);
     }
 
