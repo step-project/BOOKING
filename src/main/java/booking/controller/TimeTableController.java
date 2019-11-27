@@ -42,4 +42,9 @@ public class TimeTableController {
             console.printLn("No flight found.");
         }
   }
+
+  public void showTimeTable(){
+      console.printLn("===================================  TIME TABLE  ===================================");
+      timeTableService.getAllFlights().forEach(console::printLn);
+  }
 }

@@ -1,9 +1,8 @@
 package booking.controller;
 
 import booking.Console;
-import booking.entity.User;
-import booking.exceptions.BookingNotFound;
-import booking.exceptions.FlightNotFound;
+import booking.exceptions.BookingNotFoundException;
+import booking.exceptions.FlightNotFoundException;
 import booking.service.BookingsService;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class BookingController {
                 flight_id_str = console.readNotEmpty();
                 flight_id = Integer.parseInt(flight_id_str);
                 break;
-            } catch (FlightNotFound e){
+            } catch (FlightNotFoundException e){
                 console.printLn("Flight not found.");
                 return;
             }
@@ -65,7 +64,7 @@ public class BookingController {
 
         try{
             bookingsService.addBooking(flight_id, passengers);
-        }catch (FlightNotFound e){
+        }catch (FlightNotFoundException e){
             console.printLn("Flight Not Found.");
         }
 
@@ -85,7 +84,7 @@ public class BookingController {
             console.printLn("Booking is cancelled");
             logger.info("   Cancelled a booking");
             logger.info("       " + booking);
-        } catch (BookingNotFound e){
+        } catch (BookingNotFoundException e){
             console.printLn("Booking not found.");
         }
     }

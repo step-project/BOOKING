@@ -2,7 +2,7 @@ package booking.service;
 
 import booking.dao.AuthenticationDAO;
 import booking.entity.User;
-import booking.exceptions.AuthenticationFail;
+import booking.exceptions.AuthenticationFailException;
 import booking.exceptions.EmptyFileException;
 
 import java.util.List;
@@ -59,7 +59,7 @@ public class AuthenticationService {
                     }).collect(Collectors.toList()).get(0);
             commonService.switchMenu();
         } catch (IndexOutOfBoundsException e) {
-            throw new AuthenticationFail();
+            throw new AuthenticationFailException();
         }
     }
 

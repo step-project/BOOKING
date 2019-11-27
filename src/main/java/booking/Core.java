@@ -71,51 +71,42 @@ public class Core {
     mainController.help();
     while (cont) {
       String line = console.readLn();
-      Command user_input = parser.parse(line);
-      if(!isSessionStarted.get()){
-        switch (user_input) {
-          case LOG_IN:
-            if(authenticationController.logIn()){
-              mainController.help();
-            }
-            break;
-          case SIGN_UP:
-            authenticationController.signUp();
-            break;
-          case EXIT:
-            cont = false;
-            break;
-          default:
+      Command user_input = parser.parse(line, isSessionStarted);
+      switch (user_input) {
+        case LOG_IN:
+          if(authenticationController.logIn()){
             mainController.help();
-        }
+          }
+          break;
+        case SIGN_UP:
+          authenticationController.signUp();
+          break;
+        case SHOW_TIMETABLE:
+          timetableController.showTimeTable();
+          break;
+        case SEARCH_FOR_A_FLIGHT:
+          timetableController.search();
+          break;
+        case BOOKING_ADD:
+          bookingController.add();
+          break;
+        case BOOKING_REMOVE:
+          bookingController.remove();
+          break;
+        case BOOKING_SHOW:
+          bookingController.show();
+          break;
+        case LOG_OUT:
+          authenticationController.logOut();
+          mainController.help();
+          break;
+        case EXIT:
+          cont = false;
+          authenticationController.logOut();
+          break;
+        default:
+          mainController.help();
       }
-      else {
-        switch (user_input) {
-          case SEARCH_FOR_A_FLIGHT:
-            timetableController.search();
-            break;
-          case BOOKING_ADD:
-            bookingController.add();
-            break;
-          case BOOKING_REMOVE:
-            bookingController.remove();
-            break;
-          case BOOKING_SHOW:
-            bookingController.show();
-            break;
-          case LOG_OUT:
-            authenticationController.logOut();
-            mainController.help();
-            break;
-          case EXIT:
-            cont = false;
-            authenticationController.logOut();
-            break;
-          default:
-            mainController.help();
-        }
-
-    }
     }
   }
 }

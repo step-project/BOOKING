@@ -41,6 +41,12 @@ public class TimeTableService {
                 .collect(Collectors.toList());
     }
 
+    public List<String> getAllFlights(){
+        return timeTableDAO.getAll().stream()
+                .map(Flight::toString)
+                .collect(Collectors.toList());
+    }
+
 
     Flight getFlight(int id) {
         return timeTableDAO.get(id);
@@ -57,7 +63,7 @@ public class TimeTableService {
         List<City> cities = commonService.getAllCities();
         LocalDateTime initial = LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0, 0);
         int next_id = 1;
-        for (int i = 1; i <= 10000; i++) {
+        for (int i = 1; i <= 70; i++) {
             int random = (int)(Math.random() * 4);
             //Collections.shuffle(cities);
             for (int k = 1; k <= random; k++) {

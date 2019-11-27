@@ -1,7 +1,7 @@
 package booking.dao;
 
 import booking.entity.User;
-import booking.exceptions.AuthenticationFail;
+import booking.exceptions.AuthenticationFailException;
 import booking.exceptions.EmptyFileException;
 
 import java.io.*;
@@ -18,7 +18,7 @@ public class AuthenticationDAO implements DAO<User>{
     public User get(int id) {
         User user = users.get(id);
         if(user == null){
-            throw new AuthenticationFail();
+            throw new AuthenticationFailException();
         }
         return user;
     }

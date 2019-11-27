@@ -7,9 +7,9 @@ public class AuthenticationMenu implements Menu {
         sb.append("==================================\n");
         sb.append("|    Booking App                 |\n");
         sb.append("==================================\n");
-        sb.append("| login - Log in                 |\n");
-        sb.append("| signup - Sign Up               |\n");
-        sb.append("| exit - Exit                    |\n");
+        sb.append("| 1. Log in                      |\n");
+        sb.append("| 2. Sign Up                     |\n");
+        sb.append("| 3. Exit                        |\n");
         sb.append("==================================\n");
         return sb.toString();
     }

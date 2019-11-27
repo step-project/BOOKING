@@ -2,6 +2,9 @@ package booking.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
+import java.util.Objects;
 
 public class Flight implements Serializable {
   private final City src;
@@ -45,9 +48,11 @@ public class Flight implements Serializable {
 
   @Override
   public String toString() {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            ;
     return id +
             ".Flight : from " + getSrc().getName() + " to " + getDst().getName() +
-            " -- Date/Time : " + getTime() +
+            " -- Date/Time : " + getTime().format(formatter) +
             " -- Remaining Seats : " + remainingSeats;
   }
 
@@ -59,8 +64,8 @@ public class Flight implements Serializable {
     Flight that = (Flight) o;
 
     if (id != that.id) return false;
-    if (src != null ? !src.equals(that.src) : that.src != null) return false;
-    return dst != null ? dst.equals(that.dst) : that.dst == null;
+    if (!Objects.equals(src, that.src)) return false;
+    return Objects.equals(dst, that.dst);
   }
 
   @Override

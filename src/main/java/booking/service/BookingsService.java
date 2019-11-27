@@ -4,9 +4,9 @@ import booking.dao.BookingsDAO;
 import booking.entity.Booking;
 import booking.entity.Flight;
 import booking.entity.User;
-import booking.exceptions.BookingNotFound;
+import booking.exceptions.BookingNotFoundException;
 import booking.exceptions.EmptyFileException;
-import booking.exceptions.FlightNotFound;
+import booking.exceptions.FlightNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +29,7 @@ public class BookingsService {
         try{
             commonService.getFlight(flight_id);
             return true;
-        }catch (FlightNotFound e){
+        }catch (FlightNotFoundException e){
             return false;
 
         }
@@ -50,7 +50,7 @@ public class BookingsService {
     public void cancelBooking(int id) {
         Booking booking = bookingsDAO.get(id);
         if(!booking.getUser().equals(commonService.getCurrentUser())){
-            throw new BookingNotFound();
+            throw new BookingNotFoundException();
         }
         Flight flight = booking.getFlight();
         commonService.updateSeatsBy(flight.getId(), booking.getPassengers().size());
@@ -78,12 +78,12 @@ public class BookingsService {
         User user = commonService.getCurrentUser();
         Booking booking = bookingsDAO.get(id);
         if(booking == null){
-            throw new BookingNotFound();
+            throw new BookingNotFoundException();
         }
         if(booking.getUser().equals(user)){
             return booking.toString();
         }
-        throw new BookingNotFound();
+        throw new BookingNotFoundException();
     }
 
 

@@ -2,7 +2,7 @@ package booking.dao;
 
 import booking.entity.Flight;
 import booking.exceptions.EmptyFileException;
-import booking.exceptions.FlightNotFound;
+import booking.exceptions.FlightNotFoundException;
 
 import java.io.*;
 import java.util.*;
@@ -16,7 +16,7 @@ public class TimeTableDAO implements DAO<Flight>{
     @Override
     public Flight get(int id) {
         if(!timeTable.containsKey(id)){
-            throw new FlightNotFound("Flight not found.");
+            throw new FlightNotFoundException("Flight not found.");
         }
         return timeTable.get(id);
     }

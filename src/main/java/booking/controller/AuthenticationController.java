@@ -1,7 +1,7 @@
 package booking.controller;
 
 import booking.Console;
-import booking.exceptions.AuthenticationFail;
+import booking.exceptions.AuthenticationFailException;
 import booking.service.AuthenticationService;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -32,7 +32,7 @@ public class AuthenticationController {
             console.printLn("Hi, " + userName + "!");
             logger.info("Session Started --> " + userName);
             return true;
-        } catch (AuthenticationFail e) {
+        } catch (AuthenticationFailException e) {
             console.printLn("Username or Password is wrong");
             return false;
         }

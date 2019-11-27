@@ -1,7 +1,7 @@
 package booking.dao;
 
 import booking.entity.Booking;
-import booking.exceptions.BookingNotFound;
+import booking.exceptions.BookingNotFoundException;
 import booking.exceptions.EmptyFileException;
 
 import java.io.*;
@@ -22,7 +22,7 @@ public class BookingsDAO implements DAO<Booking>{
     @Override
     public Booking get(int id) {
         if(!bookings.containsKey(id)){
-            throw new BookingNotFound("Booking not found.");
+            throw new BookingNotFoundException("Booking not found.");
         }
         return bookings.get(id);
     }
