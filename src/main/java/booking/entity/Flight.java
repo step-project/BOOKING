@@ -3,7 +3,6 @@ package booking.entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Formatter;
 import java.util.Objects;
 
 public class Flight implements Serializable {

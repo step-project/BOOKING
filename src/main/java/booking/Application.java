@@ -1,7 +1,5 @@
 package booking;
 
-import booking.entity.User;
-
 import java.util.logging.Logger;
 
 public class Application {

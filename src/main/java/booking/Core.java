@@ -14,7 +14,6 @@ import booking.io.menus.AuthenticationMenu;
 import booking.service.*;
 
 import java.io.IOException;
-import java.util.Formatter;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;

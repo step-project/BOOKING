@@ -3,7 +3,6 @@ package booking.service;
 import booking.entity.City;
 import booking.entity.Flight;
 import booking.entity.User;
-import booking.io.menus.Menu;
 
 import java.util.List;
 

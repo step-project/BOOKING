@@ -1,7 +1,6 @@
 package booking.controller;
 
 import booking.Console;
-import booking.io.menus.Menu;
 import booking.service.MainService;
 
 public class MainController {
